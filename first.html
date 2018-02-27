@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<body>
+
+<div ng-app="first" ng-controller="SampleCtrl">
+	<br><br>
+  <table class="table table-hover">
+  	<thead>
+  		<tr>
+  			<th>S.No</th>
+  			<th>Name</th>
+  			<th>Designation</th>
+  			<th>Number</th>
+  			<th>Actions</th>
+  		</tr>
+  	</thead>
+  	<tbody>
+  		<tr ng-repeat="emp in empArr">
+  			<td>{{$index + 1}}</td>
+  			<td>{{emp.name}}</td>
+  			<td>{{emp.designation}}</td>
+  			<td>{{emp.number}}</td>
+  			<td>
+  				<span style="cursor: pointer;color: skyblue;">
+  					<span ng-click="getEmpData(emp)">edit</span>&nbsp;&nbsp;
+  					<span ng-click="deleteEmp($index)">delete</span>
+  				</span>
+  			</td>
+  		</tr>
+  	</tbody>
+  </table>
+  <br><br>
+  <div class="col-md-4">
+	  <form name="addForm" ng-submit="empDetails(data)">
+	  	<div class="form-group">
+	  		<input type="text" ng-required="true" ng-model="data.name" class="form-control" id="" placeholder="Name">
+	  		<input type="text" ng-required="true" ng-model="data.designation" class="form-control" id="" placeholder="Designation">
+	  		<input type="text" ng-required="true" ng-model="data.number" class="form-control" id="" placeholder="Number">
+	  	</div>
+	  	<button type="submit" ng-disabled="addForm.$invalid" class="btn btn-primary">Add</button>
+	  </form>
+  </div>
+  <div class="col-md-4"></div>
+    <div class="col-md-4">
+	  <form name="updateForm" ng-submit="updateDetails(empData)">
+	  	<div class="form-group">
+	  		<input type="text" ng-required="true" ng-model="empData.name" class="form-control" id="" placeholder="Name">
+	  		<input type="text" ng-required="true" ng-model="empData.designation" class="form-control" id="" placeholder="Designation">
+	  		<input type="text" ng-required="true" ng-model="empData.number" class="form-control" id="" placeholder="Number">
+	  	</div>
+	  	<button type="submit" ng-disabled="updateForm.$invalid" class="btn btn-primary">Update</button>
+	  </form>
+  </div>
+</div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="crud.controller.js"></script>
+</body>
+</html>
